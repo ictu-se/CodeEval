@@ -5,6 +5,26 @@
 - **🏷️ Weighted N-gram Match** - Ưu tiên từ khóa quan trọng  
 - **🌳 Syntax Match (AST)** - So sánh cấu trúc cú pháp
 - **🔗 Dataflow Match** - So sánh luồng dữ liệu/logic
+```
+def calc_codebleu(references, predictions, lang, weights=(0.25,0.25,0.25,0.25)):
+    # 1. Tính BLEU score (n-gram matching)
+    ngram_match_score = bleu.corpus_bleu(tokenized_refs, tokenized_hyps)
+    
+    # 2. Tính Weighted BLEU (ưu tiên keywords)  
+    weighted_ngram_match_score = weighted_ngram_match.corpus_bleu(...)
+    
+    # 3. Tính Syntax Match (AST similarity)
+    syntax_match_score = syntax_match.corpus_syntax_match(...)
+    
+    # 4. Tính Dataflow Match (logic similarity)
+    dataflow_match_score = dataflow_match.corpus_dataflow_match(...)
+    
+    # 5. Kết hợp với trọng số
+    codebleu = α*ngram + β*weighted + γ*syntax + θ*dataflow
+```
+Có nghĩa là điểm CodeBleu được tính bằng tổ hợp có trọng số từ 4 thành phần
+
+
 
 ### 📦 Cài đặt
 
@@ -242,6 +262,7 @@ pip install codebleu
 MIT License - see LICENSE file for details.
 
 ---
+
 
 
 
