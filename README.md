@@ -1,11 +1,4 @@
 # CodeBLEU Excel Processor
-
-🚀 **Tool xử lý file Excel để tính CodeBLEU cho code được sinh tự động**
-
-CodeBLEU là một metric đánh giá chất lượng code được sinh ra tự động, kết hợp 4 thành phần: N-gram Match, Weighted N-gram Match, Syntax Match, và Dataflow Match.
-
-## 📖 Giới thiệu
-
 **CodeBLEU** là một metric đánh giá chất lượng code được sinh ra tự động, kết hợp 4 thành phần:
 
 - **🔤 N-gram Match (BLEU)** - Độ tương tự từ ngữ
@@ -249,5 +242,6 @@ pip install codebleu
 MIT License - see LICENSE file for details.
 
 ---
+
 
 
