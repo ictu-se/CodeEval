@@ -18,11 +18,104 @@ CodeBLEU là một metric đánh giá chất lượng code được sinh ra tự
 ```bash
 # Cài đặt dependencies
 pip install -r requirements.txt
-
-# Hoặc cài từng package
-pip install codebleu pandas openpyxl tqdm matplotlib seaborn
-pip install "tree-sitter>=0.22.0,<0.24.0" "tree-sitter-python>=0.22.0,<0.24.0"
 ```
+## 🌐 Ngôn ngữ được hỗ trợ
+
+| Ngôn ngữ | Package | Keyword |
+|----------|---------|---------|
+| Python | `tree-sitter-python` | `python` |
+| Java | `tree-sitter-java` | `java` |
+| JavaScript | `tree-sitter-javascript` | `javascript` |
+| C# | `tree-sitter-c-sharp` | `c_sharp` |
+| C | `tree-sitter-c` | `c` |
+| C++ | `tree-sitter-cpp` | `cpp` |
+| Go | `tree-sitter-go` | `go` |
+| PHP | `tree-sitter-php` | `php` |
+| Ruby | `tree-sitter-ruby` | `ruby` |
+| Rust | `tree-sitter-rust` | `rust` |
+
+## 💻 Sử dụng cơ bản
+
+### 📝 Python API
+
+```python
+from codebleu import calc_codebleu
+
+# Ví dụ đơn giản
+references = ["def foo(x):\n    return x"]
+predictions = ["def bar(y):\n    return y"]
+
+result = calc_codebleu(references, predictions, "python")
+
+print(f"CodeBLEU Score: {result['codebleu']:.4f}")
+print(f"N-gram: {result['ngram_match_score']:.4f}")
+print(f"Weighted: {result['weighted_ngram_match_score']:.4f}")
+print(f"Syntax: {result['syntax_match_score']:.4f}")
+print(f"Dataflow: {result['dataflow_match_score']:.4f}")
+```
+### 🎛️ Tùy chỉnh weights
+
+```python
+# Weights mặc định: (0.25, 0.25, 0.25, 0.25)
+# (alpha, beta, gamma, theta) = (ngram, weighted_ngram, syntax, dataflow)
+
+# Ưu tiên logic/dataflow
+weights = (0.2, 0.2, 0.2, 0.4)
+result = calc_codebleu(references, predictions, "python", weights=weights)
+
+# Ưu tiên syntax
+weights = (0.2, 0.2, 0.4, 0.2)
+result = calc_codebleu(references, predictions, "python", weights=weights)
+
+# Chỉ quan tâm BLEU + logic  
+weights = (0.5, 0.0, 0.0, 0.5)
+result = calc_codebleu(references, predictions, "python", weights=weights)
+```
+## 🖥️ Command Line Interface
+
+### 📄 Chuẩn bị files
+
+```bash
+# reference.py
+def calculate_area(radius):
+    pi = 3.14159
+    area = pi * radius * radius
+    return area
+
+# prediction.py  
+def calculate_area(r):
+    import math
+    area = math.pi * r ** 2
+    return area
+```
+
+### 🚀 Chạy CLI
+
+```bash
+# Cú pháp cơ bản
+python -m codebleu --refs reference.py --hyp prediction.py --lang python
+
+# Kết quả
+# ngram_match: 0.0606
+# weighted_ngram_match: 0.0676
+# syntax_match: 0.3846
+# dataflow_match: 0.3333
+# CodeBLEU score: 0.2115
+```
+
+### ⚙️ Tùy chọn CLI
+
+```bash
+# Với custom weights (alpha,beta,gamma,theta)
+python -m codebleu --refs ref.py --hyp pred.py --lang python --params "0.3,0.3,0.2,0.2"
+
+# Nhiều reference files
+python -m codebleu --refs ref1.py ref2.py ref3.py --hyp pred.py --lang python
+
+# Xem help
+python -m codebleu --help
+```
+
 
 ### 🚀 Sử dụng nhanh
 
@@ -157,6 +250,4 @@ MIT License - see LICENSE file for details.
 
 ---
 
-⭐ **Star this repo if it helps you!** 
 
-🐛 **Report issues or request features via GitHub Issues**
