@@ -5,7 +5,7 @@
 - **🏷️ Weighted N-gram Match** - Ưu tiên từ khóa quan trọng  
 - **🌳 Syntax Match (AST)** - So sánh cấu trúc cú pháp
 - **🔗 Dataflow Match** - So sánh luồng dữ liệu/logic
-```
+```python
 def calc_codebleu(references, predictions, lang, weights=(0.25,0.25,0.25,0.25)):
     # 1. Tính BLEU score (n-gram matching)
     ngram_match_score = bleu.corpus_bleu(tokenized_refs, tokenized_hyps)
@@ -262,6 +262,7 @@ pip install codebleu
 MIT License - see LICENSE file for details.
 
 ---
+
 
 
 
