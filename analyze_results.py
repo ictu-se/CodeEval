@@ -132,7 +132,7 @@ def create_visualizations(valid_df, excellent, good, moderate, low):
     score_cols = [col for col in score_cols if col in valid_df.columns]
     
     box_data = [valid_df[col].dropna() for col in score_cols]
-    box = plt.boxplot(box_data, labels=[col.replace('_', '\n') for col in score_cols], patch_artist=True)
+    box = plt.boxplot(box_data, tick_labels=[col.replace('_', '\n') for col in score_cols], patch_artist=True)
     
     colors = ['lightblue', 'lightgreen', 'lightcoral', 'lightyellow', 'lightpink']
     for patch, color in zip(box['boxes'], colors[:len(score_cols)]):
@@ -224,7 +224,7 @@ def create_visualizations(valid_df, excellent, good, moderate, low):
             score_labels.extend([col.replace('_', ' ').title()] * len(valid_df[col].dropna()))
         
         plot_df = pd.DataFrame({'Score': score_data, 'Component': score_labels})
-        sns.violinplot(data=plot_df, x='Component', y='Score', palette='Set2')
+        sns.violinplot(data=plot_df, x='Component', y='Score', hue='Component', palette='Set2', legend=False)
         plt.xticks(rotation=45)
         plt.title('Score Distribution by Component', fontsize=14, fontweight='bold')
         plt.grid(True, alpha=0.3, axis='y')
