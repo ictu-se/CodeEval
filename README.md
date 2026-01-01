@@ -118,19 +118,6 @@ weights = (0.5, 0.0, 0.0, 0.5)
 result = calc_codebleu(references, predictions, "python", weights=weights)
 ```
 
-### 📋 Multiple references
-
-```python
-# Nhiều reference cho 1 prediction
-references = [
-    ["def add(a, b):\n    return a + b"],           # Reference 1
-    ["def sum_two(x, y):\n    return x + y"]        # Reference 2
-]
-predictions = ["def add_nums(a, b):\n    return a + b"]
-
-result = calc_codebleu(references, predictions, "python")
-```
-
 ### 🔧 Custom tokenizer
 
 ```python
