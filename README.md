@@ -4,7 +4,14 @@
 
 CodeBLEU là một metric đánh giá chất lượng code được sinh ra tự động, kết hợp 4 thành phần: N-gram Match, Weighted N-gram Match, Syntax Match, và Dataflow Match.
 
-## ⚡ Quick Start
+## 📖 Giới thiệu
+
+**CodeBLEU** là một metric đánh giá chất lượng code được sinh ra tự động, kết hợp 4 thành phần:
+
+- **🔤 N-gram Match (BLEU)** - Độ tương tự từ ngữ
+- **🏷️ Weighted N-gram Match** - Ưu tiên từ khóa quan trọng  
+- **🌳 Syntax Match (AST)** - So sánh cấu trúc cú pháp
+- **🔗 Dataflow Match** - So sánh luồng dữ liệu/logic
 
 ### 📦 Cài đặt
 
@@ -151,4 +158,5 @@ MIT License - see LICENSE file for details.
 ---
 
 ⭐ **Star this repo if it helps you!** 
+
 🐛 **Report issues or request features via GitHub Issues**
