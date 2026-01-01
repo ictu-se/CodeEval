@@ -238,7 +238,7 @@ File CSV chứa:
 1. **Tree-sitter version conflict:**
 ```bash
 pip uninstall tree-sitter tree-sitter-python
-pip install "tree-sitter>=0.22.0,<0.24.0" "tree-sitter-python>=0.22.0,<0.24.0"
+pip install tree-sitter==0.22.3 tree-sitter-python==0.21.0
 ```
 
 2. **Module not found:**
@@ -262,6 +262,7 @@ pip install codebleu
 MIT License - see LICENSE file for details.
 
 ---
+
 
 
 
