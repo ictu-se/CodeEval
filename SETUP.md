@@ -17,7 +17,7 @@ pip install -r requirements.txt
 
 **Important**: Make sure to use compatible tree-sitter versions:
 ```bash
-pip install "tree-sitter>=0.22.0,<0.24.0" "tree-sitter-python>=0.22.0,<0.24.0"
+pip install tree-sitter==0.22.3 tree-sitter-python==0.21.0
 ```
 
 ### 3. Test Installation
